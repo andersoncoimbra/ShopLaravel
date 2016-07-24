@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('shop.index');
-});
+Route::get('/', ['uses'=>'ProductController@getindex']);
 
 Route::get('login', function($id =''){
     return "get id {$id}";
