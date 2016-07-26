@@ -11,21 +11,20 @@
 |
 */
 
-Route::get('/', ['uses'=>'ProductController@getindex']);
+Route::get('/', ['uses'=>'ProductController@getindex', 'as'=>'products']);
 
 Route::get('login', function($id =''){
     return "get id {$id}";
 });
 
-Route::group(['prefix' => 'painel', 'middleware'=>'my-middleware'], function (){
+Route::get('/signup', [
+    'uses' => 'UserController@getSignup',
+    'as' => 'user.signup'
+]);
 
-    Route::get('/', function (){
-        return 'Home';
-    });
-    Route::get('/admin', function (){
-        return 'Painel de contole';
-    });
-    Route::get('/user', function (){
-        return 'Usuario do Sistema';
-    });
-});
+Route::post('/signup',[
+        'uses' => 'UserController@postSignup',
+        'as' => 'user.signup'
+    ]
+
+);
