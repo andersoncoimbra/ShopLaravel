@@ -13,9 +13,6 @@
 
 Route::get('/', ['uses'=>'ProductController@getindex', 'as'=>'products']);
 
-Route::get('login', function($id =''){
-    return "get id {$id}";
-});
 
 Route::get('/signup', [
     'uses' => 'UserController@getSignup',
@@ -25,6 +22,25 @@ Route::get('/signup', [
 Route::post('/signup',[
         'uses' => 'UserController@postSignup',
         'as' => 'user.signup'
+    ]
+
+);
+
+Route::get('/signin', [
+    'uses' => 'UserController@getSignin',
+    'as' => 'user.signin'
+]);
+
+Route::post('/signin',[
+        'uses' => 'UserController@postSignin',
+        'as' => 'user.signin'
+    ]
+
+);
+
+Route::get('/user/profile',[
+        'uses' => 'UserController@getProfile',
+        'as' => 'user.profile'
     ]
 
 );
